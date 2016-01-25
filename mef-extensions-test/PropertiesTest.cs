@@ -36,14 +36,17 @@ namespace mef_extensions_test
         public void AddProp_Test()
         {
             Properties properties = new Properties(_filePath);
-
+            
             StringBuilder fileContent = new StringBuilder();
             fileContent.AppendLine("prop3=c");
             File.AppendAllText(_filePath,fileContent.ToString());
 
-            string prop3 = properties.GetProp("prop3");
+            properties.PropertiesChanged += (sender, args) =>
+            {
+                string prop3 = properties.GetProp("prop3");
 
-            Assert.AreEqual(prop3,"c");
+                Assert.AreEqual(prop3, "c");
+            };
         }
 
         [TestCleanup]

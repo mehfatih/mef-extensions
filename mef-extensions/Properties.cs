@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using mef_extensions.CustomEvents;
 
 namespace mef_extensions
 {
     public class Properties
     {
+        #region Events
+
+        public event PropertiesChangedEventHandler PropertiesChanged;
+        protected virtual void OnPropertiesChanged(PropertiesChangedEventArgs args)
+        {
+            var handler = PropertiesChanged;
+            if (handler != null) handler(this, args);
+        }
+
+        #endregion
+
         private readonly Dictionary<string, string> _propDic;
         private readonly string _filePath;
 
@@ -21,10 +33,14 @@ namespace mef_extensions
             
             ReloadProperties();
 
+            string directoryPath = Path.GetDirectoryName(_filePath);
+            string fileName = Path.GetFileName(_filePath);
+
             FileSystemWatcher watcher = new FileSystemWatcher
             {
-                Path = Path.GetDirectoryName(_filePath),
-                //Filter = _filePath
+                Path = directoryPath,
+                Filter = fileName,
+                IncludeSubdirectories = false,
             };
 
             watcher.Changed += WatcherOnChanged;
@@ -36,6 +52,7 @@ namespace mef_extensions
             if (eventArgs.ChangeType == WatcherChangeTypes.Changed)
             {
                 ReloadProperties();
+                OnPropertiesChanged(new PropertiesChangedEventArgs());
             }
         }
 
