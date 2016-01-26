@@ -9,10 +9,18 @@ namespace mef_extensions
     {
         public CompositionContainer Container { get; private set; }
 
+        public void Init(string pluginsYmlFilePath)
+        {
+            Init(new PluginsConfLoader(pluginsYmlFilePath));
+        }
+
         public void Init()
         {
-            PluginsConfLoader pluginsConfLoader = new PluginsConfLoader();
+            Init(new PluginsConfLoader());
+        }
 
+        private void Init(PluginsConfLoader pluginsConfLoader)
+        {
             pluginsConfLoader.Loaded += (sender, args) =>
             {
                 if (Container != null)
@@ -26,14 +34,14 @@ namespace mef_extensions
 
                 foreach (string plugins in pluginsConf.PluginsList)
                 {
-                    string path = Path.Combine(pluginsConf.PluginsDir,plugins);
+                    string path = Path.Combine(pluginsConf.PluginsDir, plugins);
                     Assembly assembly = Assembly.LoadFile(path);
                     catalog.Catalogs.Add(new AssemblyCatalog(assembly));
                 }
 
                 //Create the CompositionContainer with the parts in the catalog.
                 Container = new CompositionContainer(catalog);
-                
+
                 //Fill the imports of this object
                 Container.ComposeParts(GetComposedParts());
             };
