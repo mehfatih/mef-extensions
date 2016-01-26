@@ -6,15 +6,15 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace mef_extensions
 {
-    public class PluginsLoader
+    public class PluginsConfLoader
     {
         #region Events
 
-        public event PluginsConfLoadedEventHandler PluginsConfLoaded;
+        public event PluginsConfLoadedEventHandler Loaded;
 
         protected virtual void OnPluginsLoaded(PluginsConfLoadedEventArgs args)
         {
-            var handler = PluginsConfLoaded;
+            var handler = Loaded;
             if (handler != null) handler(this, args);
         }
 
@@ -22,11 +22,11 @@ namespace mef_extensions
 
         private readonly string _pluginsYmlFile;
 
-        public PluginsLoader() : this("plugins.yml")
+        public PluginsConfLoader() : this("plugins.yml")
         {
         }
 
-        public PluginsLoader(string filePath)
+        public PluginsConfLoader(string filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -36,7 +36,7 @@ namespace mef_extensions
             _pluginsYmlFile = filePath;
         }
 
-        public void Init()
+        public void Load()
         {
             LoadPlugins();
 

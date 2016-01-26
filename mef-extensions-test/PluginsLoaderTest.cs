@@ -27,9 +27,9 @@ namespace mef_extensions_test
         [TestMethod]
         public void LoadPlugins_With_Valid_Data()
         {
-            PluginsLoader pluginsLoader = new PluginsLoader(_filePath);
+            PluginsConfLoader pluginsConfLoader = new PluginsConfLoader(_filePath);
 
-            pluginsLoader.PluginsConfLoaded += (sender, args) =>
+            pluginsConfLoader.Loaded += (sender, args) =>
             {
                 Assert.AreEqual(args.PluginsConf.PluginsDir, ".");
                 Assert.IsNotNull(args.PluginsConf.PluginsList);
@@ -38,7 +38,7 @@ namespace mef_extensions_test
                 Assert.AreEqual(args.PluginsConf.PluginsList[1], "b.dll");
             };
 
-            pluginsLoader.Init();
+            pluginsConfLoader.Load();
 
         }
 

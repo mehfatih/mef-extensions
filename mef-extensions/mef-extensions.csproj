@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mef_extensions</RootNamespace>
     <AssemblyName>mef-extensions</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomEvents\PluginsConfLoadedEventArgs.cs" />
-    <Compile Include="Importer.cs" />
+    <Compile Include="DefaultImporter.cs" />
+    <Compile Include="ImporterBase.cs" />
     <Compile Include="PluginsConf.cs" />
-    <Compile Include="PluginsLoader.cs" />
+    <Compile Include="PluginsConfLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
