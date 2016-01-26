@@ -12,7 +12,7 @@ namespace mef_extensions
 {
     public class Importer
     {
-        private DirectoryCatalog _directoryCatalog;
+        public DirectoryCatalog DirCatalog { get; private set; }
 
         public void Init()
         {
@@ -27,8 +27,8 @@ namespace mef_extensions
 
                 if (!string.IsNullOrEmpty(directoryPath))
                 {
-                    _directoryCatalog = new DirectoryCatalog(directoryPath);
-                    catalog.Catalogs.Add(_directoryCatalog);
+                    DirCatalog = new DirectoryCatalog(directoryPath);
+                    catalog.Catalogs.Add(DirCatalog);
                 }
             }
 

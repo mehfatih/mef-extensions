@@ -1,0 +1,4 @@
+﻿plugins-dir : .
+plugins:
+	-a.dll
+	-b.dll
