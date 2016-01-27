@@ -16,6 +16,12 @@ plugins:
  - b.dll
 ```
 
+## Third part libraries
+* see LIBRARIES file
+
+## Licence
+* see [LICENCE](https://github.com/mfozd/mef-extensions/blob/master/LICENSE) file
+
 ## Contact
 #### Developer
   * e-mail : mehmetfatihozd@gmail.com
