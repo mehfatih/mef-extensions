@@ -22,6 +22,9 @@ plugins:
 ## Licence
 * see [LICENCE](https://github.com/mfozd/mef-extensions/blob/master/LICENSE) file
 
+## Sample Project
+* see [mef-extensions-example](https://github.com/mfozd/mef-extensions-example) project
+
 ## Contact
 #### Developer
   * e-mail : mehmetfatihozd@gmail.com
