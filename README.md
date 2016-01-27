@@ -17,7 +17,7 @@ plugins:
 ```
 
 ## Third part libraries
-* see LIBRARIES file
+* see [LIBRARIES](https://github.com/mfozd/mef-extensions/blob/master/LIBRARIES.md) file
 
 ## Licence
 * see [LICENCE](https://github.com/mfozd/mef-extensions/blob/master/LICENSE) file
